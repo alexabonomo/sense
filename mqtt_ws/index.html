@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MQTT Display</title>
+    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
+    <script src="/sketch.js"></script>
+
+    <script>
+        var socket = io.connect('//localhost:3000');
+        socket.on('data', function(data) {
+            console.log(data);
+            $('#name').text(data.val);
+
+        });
+        socket.on('error', function() {
+            console.error(arguments)
+        });
+    </script>
+</head>
+
+<body>
+    <h1 id="name" class='elegantshadow'>Hello</h1>
+</body>
+
+</html>
