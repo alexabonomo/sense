@@ -30,4 +30,6 @@ client.on('message', function(topic, message) {
     io.sockets.emit('data', {
         val: x
     });
+
+
 });
