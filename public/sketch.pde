@@ -1,7 +1,7 @@
 ArrayList history = new ArrayList();
 float dist = 80;
 float accelx;
-float accelx;
+float accely;
 
 void setup() {
   size(2000, 2000);
