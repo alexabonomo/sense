@@ -11,55 +11,22 @@
     <script type="application/javascript">
      var socket = io.connect('//localhost:3000');
      var globalaccelx = null;
-
-
-
              socket.on('data', function(data) {
-
                function map_range(value, low1, high1, low2, high2) {
                    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
                  }
-
                   var accelx = map_range(data.x,-10,10,0.0,1000);
                   var accely = map_range(data.y,-10,10,0.0,1000);
-
-                  globalaccelx = accelx;
-
-
+                  var instance = Processing.getInstanceById('internal');
+                  instance.updateValues(accelx,accely); // Call to internalFunction() inside internal.pde
                  console.log("x: " + accelx + " y: " + accely);
-
-
-
                  console.log(data);
                  $('#xaccelvalue').text(map_range(data.x,-10,10,0.0,1000));
                  $('#yaccelvalue').text(map_range(data.y,-10,10,0.0,1000));
-
                  });
-
              socket.on('error', function() {
                  console.error(arguments)
              });
-
-             var printValue = function(data) {
-
-
-               document.getElementById('msg').innerHTML = "Message: " + data;
-
-
-             }
-
-             var jsString = "accelx";
-             var printMessage = function (msg) {
-                  document.getElementById('msg').innerHTML = "Message: " + msg;
-                };
-
-             //   function updateValues(accelx, accely) {
-             //           console.log(accelx);
-             //           console.log(accely);
-             //         };
-             //
-             // instance = Processing.getInstanceById('internal');
-             // instance.updateValues(); // Call to internalFunction() inside internal.pde
     </script>
 </head>
 
