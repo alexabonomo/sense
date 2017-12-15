@@ -38,4 +38,12 @@ client.on('message', function(topic, message) {
     console.log("accel is: ", accel);
     io.sockets.emit('data', accel
     )
+
+    function map_range(value, low1, high1, low2, high2) {
+        return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+      }
+
+    var accelx = map_range(data.x,-10,10,0.0,1000);
+    var accely = map_range(data.y,-10,10,0.0,1000);
+    
   });

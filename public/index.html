@@ -8,39 +8,67 @@
     <script src="/processing.min.js"></script>
 
 
-    <script>
-        var socket = io.connect('//localhost:3000');
+    <script type="application/javascript">
+     var socket = io.connect('//localhost:3000');
+     var globalaccelx = null;
 
 
 
-        socket.on('data', function(data) {
+             socket.on('data', function(data) {
 
-          function map_range(value, low1, high1, low2, high2) {
-              return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
-            }
+               function map_range(value, low1, high1, low2, high2) {
+                   return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+                 }
 
-          var accelx = map_range(data.x,-10,10,0.0,1000);
-          var accely = map_range(data.y,-10,10,0.0,1000);
+                  var accelx = map_range(data.x,-10,10,0.0,1000);
+                  var accely = map_range(data.y,-10,10,0.0,1000);
 
-          console.log("x: " + accelx + " y: " + accely);
-
-            console.log(data);
-            $('#xaccelvalue').text(map_range(data.x,-10,10,0.0,1000));
-            $('#yaccelvalue').text(map_range(data.y,-10,10,0.0,1000));
+                  globalaccelx = accelx;
 
 
-        });
-        socket.on('error', function() {
-            console.error(arguments)
-        });
+                 console.log("x: " + accelx + " y: " + accely);
 
+
+
+                 console.log(data);
+                 $('#xaccelvalue').text(map_range(data.x,-10,10,0.0,1000));
+                 $('#yaccelvalue').text(map_range(data.y,-10,10,0.0,1000));
+
+                 });
+
+             socket.on('error', function() {
+                 console.error(arguments)
+             });
+
+             var printValue = function(data) {
+
+
+               document.getElementById('msg').innerHTML = "Message: " + data;
+
+
+             }
+
+             var jsString = "accelx";
+             var printMessage = function (msg) {
+                  document.getElementById('msg').innerHTML = "Message: " + msg;
+                };
+
+             //   function updateValues(accelx, accely) {
+             //           console.log(accelx);
+             //           console.log(accely);
+             //         };
+             //
+             // instance = Processing.getInstanceById('internal');
+             // instance.updateValues(); // Call to internalFunction() inside internal.pde
     </script>
 </head>
 
 <body>
+  <div id="msg">
+  </div>
     <h1 id="xaccelvalue">x value</h1>
     <h1 id="yaccelvalue">y value</h1>
-    <canvas data-processing-sources="sketch.pde"></canvas>
+    <canvas id="internal" data-processing-sources="sketch.pde"></canvas>
 </body>
 
 </html>
