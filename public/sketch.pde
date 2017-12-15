@@ -4,7 +4,7 @@ float accelx;
 float accely;
 
 void setup() {
-  size(2000, 2000);
+  size(1000, 1000);
   randomSeed(0);
   background(255);
   stroke(0, 150);
