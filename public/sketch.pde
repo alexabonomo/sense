@@ -3,6 +3,9 @@ void updateValues(accelx,accely) {
   console.log("in processing",accelx,accely);
 }
 
+float x = accelx;
+float y = accely;
+
 ArrayList history = new ArrayList();
 float dist = 80;
 
@@ -15,9 +18,6 @@ void setup() {
   noFill();
 }
 void draw() {
-
-x= accelx;
-y= accely;
 
 PVector d = new PVector(x, y, 0);
 history.add(0, d);
