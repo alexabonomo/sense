@@ -3,11 +3,11 @@ void updateValues(accelx,accely) {
   console.log("in processing",accelx,accely);
 }
 
-float x = accelx;
-float y = accely;
 
 ArrayList history = new ArrayList();
 float dist = 80;
+float x = accelx;
+float y = accely;
 
 void setup() {
   size(1000, 1000);
