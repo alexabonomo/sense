@@ -1,5 +1,5 @@
 var mqtt = require('mqtt');
-var client = mqtt.connect('mqtt://10.10.7.39');
+var client = mqtt.connect('mqtt://10.0.0.50');
 //import express
 var express = require('express');
 //create express object named app
@@ -11,6 +11,9 @@ var io = require('socket.io')(server);
 
 let accel;
 
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
 
 //expose the local public folder for inluding files js, css etc..
 app.use(express.static('public'));
@@ -33,7 +36,6 @@ client.on('message', function(topic, message) {
     d = message.toString().split(",");
     accel = {x: d[0], y: d[1], z: d[2]}
     console.log("accel is: ", accel);
-    io.sockets.emit('data'), {
-        val: accel
-    }
+    io.sockets.emit('data', accel
+    )
   });

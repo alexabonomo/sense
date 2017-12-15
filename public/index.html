@@ -10,19 +10,36 @@
 
     <script>
         var socket = io.connect('//localhost:3000');
+
+
+
         socket.on('data', function(data) {
+
+          function map_range(value, low1, high1, low2, high2) {
+              return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
+            }
+
+          var accelx = map_range(data.x,-10,10,0.0,1000);
+          var accely = map_range(data.y,-10,10,0.0,1000);
+
+          console.log("x: " + accelx + " y: " + accely);
+
             console.log(data);
-            $('#name').text(data.val);
+            $('#xaccelvalue').text(map_range(data.x,-10,10,0.0,1000));
+            $('#yaccelvalue').text(map_range(data.y,-10,10,0.0,1000));
+
 
         });
         socket.on('error', function() {
             console.error(arguments)
         });
+
     </script>
 </head>
 
 <body>
-    <h1 id="name" class='elegantshadow'>Hello</h1>
+    <h1 id="xaccelvalue">x value</h1>
+    <h1 id="yaccelvalue">y value</h1>
     <canvas data-processing-sources="sketch.pde"></canvas>
 </body>
 

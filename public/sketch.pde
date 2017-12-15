@@ -1,6 +1,7 @@
 ArrayList history = new ArrayList();
 float dist = 80;
-float x = accel["x"];
+float accelx;
+float accelx;
 
 void setup() {
   size(2000, 2000);
@@ -13,7 +14,7 @@ void setup() {
 void draw() {
 
 
-PVector d = new PVector( x, 100, 0);
+PVector d = new PVector(accelx, accely, 0);
 history.add(0, d);
 
 for (int p=0; p<history.size (); p++) {

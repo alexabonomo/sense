@@ -28,9 +28,9 @@ int seq;
 /* Assign a unique ID to this sensor at the same time */
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
 // Update these with values suitable for your network.
-const char* ssid = "Gray Area Incubator";
-const char* password = "grandstand";
-const char* mqtt_server = "10.10.7.39";
+const char* ssid = "Brockhurst Crew";
+const char* password = "819brock";
+const char* mqtt_server = "10.0.0.50";
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
