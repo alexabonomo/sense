@@ -1,16 +1,20 @@
 
 void updateValues(accelx,accely) {
   console.log("in processing",accelx,accely);
-}
+  accelGlobalX = accelx;
+  accelGlobalY = accely;
 
+}
 
 ArrayList history = new ArrayList();
 float dist = 80;
-float x = accelx;
-float y = accely;
+float accelGlobalX;
+float accelGlobalY;
+
+
 
 void setup() {
-  size(1000, 1000);
+  size(2000, 2000);
   randomSeed(0);
   background(255);
   stroke(0, 150);
@@ -19,7 +23,10 @@ void setup() {
 }
 void draw() {
 
-PVector d = new PVector(x, y, 0);
+float x = accelGlobalX;
+float y = accelGlobalY;
+
+PVector d = new PVector( x, y, 0);
 history.add(0, d);
 
 for (int p=0; p<history.size (); p++) {
