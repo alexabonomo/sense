@@ -14,7 +14,9 @@
     "jsdom": "^11.5.1",
     "mqtt": "^1.7.3",
     "node-osc": "^1.2.0",
+    "p5": "^0.5.16",
     "processing-js": "^1.6.6",
+    "serialport": "^4.0.3",
     "socket.io": "^1.4.5"
   }
 }

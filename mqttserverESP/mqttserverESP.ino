@@ -1,3 +1,5 @@
+
+
 /*
  Basic ESP8266 MQTT example
  This sketch demonstrates the capabilities of the pubsub library in combination
@@ -28,9 +30,9 @@ int seq;
 /* Assign a unique ID to this sensor at the same time */
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
 // Update these with values suitable for your network.
-const char* ssid = "GA-Guest";
-const char* password = "yellowpencil";
-const char* mqtt_server = "10.1.6.159";
+const char* ssid = "Gray Area Incubator";
+const char* password = "grandstand";
+const char* mqtt_server = "10.10.7.39";
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
@@ -251,5 +253,5 @@ strcat(data, tempData);
 //    client.publish("accely", dtostrf(event.acceleration.y, 6, 2, data));
 //    client.publish("accelz", dtostrf(event.acceleration.z, 6, 2, data));
     //data.empty();
-    delay(50);
+    delay(0);
 }

@@ -1,5 +1,5 @@
 var mqtt = require('mqtt');
-var client = mqtt.connect('mqtt://10.1.6.159');
+var client = mqtt.connect('mqtt://10.10.7.39');
 //import express
 var express = require('express');
 //create express object named app

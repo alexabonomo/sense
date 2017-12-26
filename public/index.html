@@ -6,6 +6,8 @@
     <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src="/processing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.16/p5.js"></script>
+
 
 
     <script type="application/javascript">
@@ -15,14 +17,12 @@
                function map_range(value, low1, high1, low2, high2) {
                    return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
                  }
-                  var accelx = map_range(data.x,-10,10,0.0,1000);
-                  var accely = map_range(data.y,-10,10,0.0,1000);
+                  var accelx = map_range(data.x,-10,10,100,3500);
+                  var accely = map_range(data.y,-10,10,100,2000);
                   var instance = Processing.getInstanceById('internal');
                   instance.updateValues(accelx,accely); // Call to internalFunction() inside internal.pde
                  console.log("x: " + accelx + " y: " + accely);
                  console.log(data);
-                 $('#xaccelvalue').text(map_range(data.x,-10,10,0.0,1000));
-                 $('#yaccelvalue').text(map_range(data.y,-10,10,0.0,1000));
                  });
              socket.on('error', function() {
                  console.error(arguments)
@@ -31,10 +31,6 @@
 </head>
 
 <body>
-  <div id="msg">
-  </div>
-    <h1 id="xaccelvalue">x value</h1>
-    <h1 id="yaccelvalue">y value</h1>
     <canvas id="internal" data-processing-sources="sketch.pde"></canvas>
 </body>
 
